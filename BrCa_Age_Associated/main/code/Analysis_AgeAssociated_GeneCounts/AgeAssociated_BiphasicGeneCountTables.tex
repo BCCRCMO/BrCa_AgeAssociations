@@ -1,0 +1,162 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Age Associated Biphasic Gene Counts},
+            pdfauthor={Steven McKinney},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Age Associated Biphasic Gene Counts}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Steven McKinney}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{2018-08-02}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+
+\begin{document}
+\maketitle
+
+\begin{table}[H]
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}{lllrrrrr}
+\toprule
+Source & Site & Subtype & Case Count & Gene Count & Abs(FC) > 1.25 & Abs(FC) > 2 & Abs(FC) > 4\\
+\midrule
+TCGA & BrCa & All Cases & 1079 & 18950 & 891 & 30 & 2\\
+TCGA & BrCa & ER- HER2- & 155 & 18950 & 0 & 0 & 0\\
+TCGA & BrCa & ER- HER2+ & 43 & 18950 & 0 & 0 & 0\\
+TCGA & BrCa & ER+ HER2- & 538 & 18950 & 660 & 58 & 7\\
+TCGA & BrCa & ER+ HER2+ & 134 & 18950 & 5 & 1 & 0\\
+\addlinespace
+TCGA & BrCa & iClust 1 & 75 & 18950 & 0 & 0 & 0\\
+TCGA & BrCa & iClust 2 & 38 & 18950 & 0 & 0 & 0\\
+TCGA & BrCa & iClust 3 & 181 & 18950 & 106 & 27 & 7\\
+TCGA & BrCa & iClust 4 & 165 & 18950 & 1 & 0 & 0\\
+TCGA & BrCa & iClust 5 & 84 & 18950 & 0 & 0 & 0\\
+\addlinespace
+TCGA & BrCa & iClust 6 & 60 & 18950 & 0 & 0 & 0\\
+TCGA & BrCa & iClust 7 & 100 & 18950 & 1 & 0 & 0\\
+TCGA & BrCa & iClust 8 & 145 & 18950 & 165 & 59 & 13\\
+TCGA & BrCa & iClust 9 & 74 & 18950 & 0 & 0 & 0\\
+TCGA & BrCa & iClust 10 & 157 & 18950 & 0 & 0 & 0\\
+\addlinespace
+METABRIC & BrCa & All Cases & 1992 & 18950 & 763 & 6 & 0\\
+METABRIC & BrCa & ER- HER2- & 335 & 18950 & 9 & 3 & 1\\
+METABRIC & BrCa & ER- HER2+ & 139 & 18950 & 0 & 0 & 0\\
+METABRIC & BrCa & ER+ HER2- & 1408 & 18950 & 406 & 13 & 0\\
+METABRIC & BrCa & ER+ HER2+ & 110 & 18950 & 0 & 0 & 0\\
+\addlinespace
+METABRIC & BrCa & iClust 1 & 140 & 18950 & 3 & 0 & 0\\
+METABRIC & BrCa & iClust 2 & 72 & 18950 & 0 & 0 & 0\\
+METABRIC & BrCa & iClust 3 & 294 & 18950 & 192 & 23 & 1\\
+METABRIC & BrCa & iClust 4 & 344 & 18950 & 210 & 26 & 2\\
+METABRIC & BrCa & iClust 5 & 191 & 18950 & 1 & 0 & 0\\
+\addlinespace
+METABRIC & BrCa & iClust 6 & 86 & 18950 & 0 & 0 & 0\\
+METABRIC & BrCa & iClust 7 & 193 & 18950 & 7 & 4 & 1\\
+METABRIC & BrCa & iClust 8 & 300 & 18950 & 202 & 29 & 3\\
+METABRIC & BrCa & iClust 9 & 146 & 18950 & 1 & 0 & 0\\
+METABRIC & BrCa & iClust 10 & 226 & 18950 & 0 & 0 & 0\\
+\addlinespace
+METABRIC & BrCa & LumA & 721 & 18950 & 560 & 27 & 1\\
+METABRIC & BrCa & LumB & 492 & 18950 & 281 & 13 & 0\\
+METABRIC & BrCa & HER2 & 240 & 18950 & 0 & 0 & 0\\
+METABRIC & BrCa & Basal & 331 & 18950 & 0 & 0 & 0\\
+METABRIC & BrCa & Normal & 202 & 18950 & 0 & 0 & 0\\
+\addlinespace
+TCGA & KidneyCa & All Cases & 532 & 18950 & 4 & 0 & 0\\
+TCGA & LungCa & All Cases & 495 & 18950 & 251 & 14 & 0\\
+TCGA & ProstateCa & All Cases & 496 & 18950 & 9 & 1 & 0\\
+TCGA & ThyroidCa & All Cases & 500 & 18950 & 132 & 5 & 0\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+
+\end{document}

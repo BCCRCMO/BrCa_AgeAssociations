@@ -1,0 +1,49 @@
+---
+title: "Age Associated Biphasic Gene Proportions"
+author: "Steven McKinney"
+date: '2018-08-02'
+output:
+  pdf_document:
+    keep_tex: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	results = "asis"
+)
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+```{r load}
+# Load packages
+library(tidyverse)
+library(glue)
+library(cli)
+library(ageassn)
+library(pander)
+library(knitr)
+library(kableExtra)
+library(dplyr)
+panderOptions("knitr.auto.asis", FALSE)
+panderOptions("digits", 2)
+
+# Comparisons on fdr and fc levels, all organ groups
+comps <- list(list(0.05, 1.25),
+              list(0.01, 1.25),
+              list(0.01, 2),
+              list(0.01, 4)) %>% 
+  set_names(gsub("list\\(|\\)|,", "", .)) %>% 
+  map(set_names, c("fdr", "fc"))
+organs <- c("Br", "Kidney", "Lung", "Prostate", "Thyroid")
+```
+
+```{r load-all-cases}
+# All Cases
+METABRIC_AgeAssociated_GeneCounts <-
+  read_csv("main/code/Analysis_AgeAssociated_GeneCounts/AgeAssociated_BiphasicGeneCounts_Main.csv") %>%
+  select(., c("Source", "Site", "Subtype", "Case Count", "Gene Count", "Abs(FC) > 1.25 (Pct)", "Abs(FC) > 2 (Pct)", "Abs(FC) > 4 (Pct)"))
+kable(METABRIC_AgeAssociated_GeneCounts, "latex", booktabs = TRUE) %>%
+kable_styling(latex_options = c("scale_down"))

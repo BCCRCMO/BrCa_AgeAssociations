@@ -1,4 +1,3 @@
-foo
 .RData*
 .Rhistory*
 .DS_Store
@@ -14,11 +13,7 @@ main/data/Data_METABRIC_EGA/EGAS00000000083/*/
 main/data/Data_METABRIC_Expression_Trends/Dataset_r.rds
 main/data/Data_METABRIC_Expression_Trends/Annotation_Illumina_Human-WG-V3_hg18_V1.0.0_Aug09.txt
 main/tables/AgeAssociatedGenesByType_SMworking.xlsx
-~$TableS2_IHC_RandomizationTestsTabulationPvalTrends.xlsx
-~$AgeAssociatedGeneTargetCountsBySiteGenderSubtype.xlsx
-~$1.6.7) Tables (Age and EZH2 Tomo).xlsx
 AgeAssociatedGenesByType_SMworking.xlsx
-~$AgeAssociatedGenesByType_SMworking.xlsx
 main/figures/Aparicio_ED_Fig1.jpg
 main/figures/Aparicio_ED_Fig1.pdf
 main/figures/Aparicio_ED_Fig10.jpg
@@ -58,3 +53,4 @@ main/figures/Aparicio_Fig1.png
 main/figures/Aparicio_Fig2.png
 main/figures/Aparicio_Fig5.png
 main/figures/supplemental_age_biphasic.pdf
+Rsession*

@@ -1,0 +1,327 @@
+---
+title: "Age Associated Gene Set Similarities"
+author: "Derek Chiu"
+date: '2018-05-16'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	results = "asis"
+)
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+```{r load}
+# Load packages
+library(tidyverse)
+library(glue)
+library(cli)
+library(ageassn)
+library(pander)
+panderOptions("knitr.auto.asis", FALSE)
+
+# Comparisons on fdr and fc levels, all organ groups
+comps <- list(list(0.05, 1.25),
+              list(0.01, 1.25),
+              list(0.01, 2),
+              list(0.01, 4)) %>% 
+  set_names(gsub("list\\(|\\)|,", "", .)) %>% 
+  map(set_names, c("fdr", "fc"))
+organs <- c("Br", "Kidney", "Lung", "Prostate", "Thyroid")
+```
+
+```{r load-all-cases}
+# All Cases
+# Filter METABRIC by matching TCGA probes
+TCGA_BRCA_mRNAex_annotation <- read_csv("main/data/Data_TCGA_BrCa_RNASeq_Expression_Trends/TCGA_BRCA_mRNAex_annotation.csv")
+METABRIC <- read_rds("main/code/Analysis_METABRIC_Expression_Trends/Memoized/AgeRelated_AllProbes_All_cases_FDR_0p01_All1992Cases_lm_v01.rds")
+METABRIC <- METABRIC %>% 
+  filter(.data$Probe_id %in% TCGA_BRCA_mRNAex_annotation$MatchingIlluminaProbeId)
+
+# TCGA BrCa
+code.dir <- "main/code/Analysis_TCGA_{organ}Ca_RNASeq_Expression_Trends/"
+BrCa_files <- paste0(code.dir, "Memoized/TCGA_BrCa_All_cases_FDR_{fdr}_outdf.csv")
+TCGA_BrCa <- map(set_names(c(0.05, 0.01)), ~ {
+  glue(BrCa_files, organ = "Br", fdr = str_decimal(.))
+}) %>% 
+  map(read_csv)
+
+# TCGA Other All Cases
+subdir_all <- paste0(c("AllCases/", "AllCases/", "", "AllCases/"), "tables/")
+TCGA_Other_All <- map2(
+  organs[-1],
+  subdir_all,
+  ~ comps %>% 
+    map(function(comp) tcga_path(
+      root.dir = glue(code.dir, organ = .x),
+      file.name = "BHadj_and_AgeDependent_aroutdf",
+      fdr = comp[["fdr"]],
+      fc = comp[["fc"]],
+      sub.dir = .y
+    )) %>% 
+    map(read_csv)
+)
+
+# Store all TCGA data in a list
+TCGA_List_All <- 
+  splice(list(TCGA_BrCa), TCGA_Other_All) %>% 
+  set_names(organs)
+
+# Use for headers and captions
+captions <- "FET {info} {group} {comparison}, {.y}"
+caption_lvls <- comps %>%
+  names() %>%
+  map_chr(
+    ~ paste(c("FDR =", "FC ="), strsplit(., split = " ")[[1]], collapse = ", ")
+  )
+```
+
+# METABRIC vs TCGA Comparisons
+
+```{r compare-metabric-tcga}
+# METABRIC vs TCGA
+args <- map(comps, ~ splice(., metabric = METABRIC))
+mvt_tabs_all <- organs %>%
+  map(~ invoke_map(comp_metabric_tcga, args, TCGA_List_All[[.]], organ = .)) %>%
+  set_names(paste0("METABRIC vs. TCGA_", organs, "Ca")) %>%
+  map(set_names, caption_lvls)
+```
+
+```{r pander-metabric-tcga, results='asis'}
+# Print out contingency table and FET statistics
+iwalk(mvt_tabs_all, ~ {
+  comparison <- .y
+  cat_line("## ", comparison)
+  iwalk(.x, ~ {
+    pander(.x, caption = glue(captions, info = "Table",
+                              group = "All Cases"), digits = 2)
+    stat <- tidy_fet(.x$fisher.ts)
+    pander(stat, caption = glue(captions, info = "Statistics",
+                                group = "All Cases"))
+    cat_line("\\pagebreak")
+  })
+})
+```
+
+# TCGA Pairwise Comparisons
+
+```{r compare-pairwise-tcga}
+# Pairwise TCGA
+organ_pairs <- combn(organs, 2) %>% array_branch(1)
+pair_tabs_all <- organ_pairs %>%
+  pmap(
+    ~ invoke_map(
+      comp_pair_tcga,
+      comps,
+      x = TCGA_List_All[[.x]],
+      y = TCGA_List_All[[.y]],
+      x_organ = .x,
+      y_organ = .y
+    )
+  ) %>% 
+  set_names(map(organ_pairs, ~ paste0("TCGA_", ., "Ca")) %>%
+              pmap(paste, sep = " vs. ")) %>% 
+  map(set_names, caption_lvls)
+```
+
+```{r pander-pairwise-tcga}
+# Print out contingency table and FET statistics
+iwalk(pair_tabs_all, ~ {
+  comparison <- .y
+  cat_line("## ", comparison)
+  iwalk(.x, ~ {
+    pander(.x, caption = glue(captions, info = "Table",
+                              group = "All Cases"), digits = 2)
+    stat <- tidy_fet(.x$fisher.ts)
+    pander(stat, caption = glue(captions, info = "Statistics",
+                                group = "All Cases"))
+    cat_line("\\pagebreak")
+  })
+})
+```
+
+# Within Gender Comparisons
+
+## Females
+
+```{r load-female-cases}
+# TCGA Other Females
+subdir_f <- rep(c("Females/tables/"), 3)
+TCGA_Other_F <- map2(
+  organs[-c(1, 4)],
+  subdir_f,
+  ~ comps %>% 
+    map(function(comp) tcga_path(
+      root.dir = glue(code.dir, organ = .x),
+      file.name = "BHadj_and_AgeDependent_aroutdf",
+      fdr = comp[["fdr"]],
+      fc = comp[["fc"]],
+      sub.dir = .y
+    )) %>% 
+    map(read_csv)
+)
+
+# Store all TCGA data in a list
+TCGA_List_F <- 
+  splice(list(TCGA_BrCa), TCGA_Other_F) %>% 
+  set_names(organs[-4])
+```
+
+```{r compare-tcga-females}
+# Pairwise TCGA
+organ_pairs <- combn(organs[-4], 2) %>% array_branch(1)
+pair_tabs_F <- organ_pairs %>%
+  pmap(
+    ~ invoke_map(
+      comp_pair_tcga,
+      comps,
+      x = TCGA_List_F[[.x]],
+      y = TCGA_List_F[[.y]],
+      x_organ = .x,
+      y_organ = .y
+    )
+  ) %>% 
+  set_names(map(organ_pairs, ~ paste0("TCGA_", ., "Ca")) %>%
+              pmap(paste, sep = " vs. ")) %>% 
+  map(set_names, caption_lvls)
+```
+
+```{r pander-tcga-females}
+# Print out contingency table and FET statistics
+iwalk(pair_tabs_F, ~ {
+  comparison <- .y
+  cat_line("## ", comparison)
+  iwalk(.x, ~ {
+    pander(.x, caption = glue(captions, info = "Table",
+                              group = "Females"), digits = 2)
+    stat <- tidy_fet(.x$fisher.ts)
+    pander(stat, caption = glue(captions, info = "Statistics",
+                                group = "Females"))
+    cat_line("\\pagebreak")
+  })
+})
+```
+
+## Males
+
+```{r load-male-cases}
+# TCGA Other Males
+subdir_m <- paste0(c("Males/", "Males/", "", "Males/"), "tables/")
+TCGA_Other_M <- map2(
+  organs[-1],
+  subdir_m,
+  ~ comps %>% 
+    map(function(comp) tcga_path(
+      root.dir = glue(code.dir, organ = .x),
+      file.name = "BHadj_and_AgeDependent_aroutdf",
+      fdr = comp[["fdr"]],
+      fc = comp[["fc"]],
+      sub.dir = .y
+    )) %>% 
+    map(read_csv)
+)
+
+# Store all TCGA data in a list
+TCGA_List_M <- TCGA_Other_M %>% set_names(organs[-1])
+```
+
+```{r compare-tcga-males}
+# Pairwise TCGA
+organ_pairs <- combn(organs[-1], 2) %>% array_branch(1)
+pair_tabs_M <- organ_pairs %>%
+  pmap(
+    ~ invoke_map(
+      comp_pair_tcga,
+      comps,
+      x = TCGA_List_M[[.x]],
+      y = TCGA_List_M[[.y]],
+      x_organ = .x,
+      y_organ = .y
+    )
+  ) %>% 
+  set_names(map(organ_pairs, ~ paste0("TCGA_", ., "Ca")) %>%
+              pmap(paste, sep = " vs. ")) %>% 
+  map(set_names, caption_lvls)
+```
+
+```{r pander-tcga-males}
+# Print out contingency table and FET statistics
+iwalk(pair_tabs_M, ~ {
+  comparison <- .y
+  cat_line("## ", comparison)
+  iwalk(.x, ~ {
+    pander(.x, caption = glue(captions, info = "Table",
+                              group = "Males"), digits = 2)
+    stat <- tidy_fet(.x$fisher.ts)
+    pander(stat, caption = glue(captions, info = "Statistics",
+                                group = "Males"))
+    cat_line("\\pagebreak")
+  })
+})
+```
+
+# Multiple Comparison Adjustments
+
+## All Cases
+
+```{r fet-pvalues-all-cases}
+# FET p-values and adjusted p-values for multiple comparisons
+pvals_all <- splice(mvt_tabs_all, pair_tabs_all) %>% 
+  modify_depth(2, ~ .[["fisher.ts"]]$p.value) %>%
+  unlist() %>% 
+  set_names(gsub("\\.FDR", ", FDR", names(.)))
+adj_pvals_all <- p.adjust(pvals_all, method = "fdr")
+
+pander(
+  cbind(pvals_all, adj_pvals_all),
+  caption = "All Cases Original and Adjusted p-values",
+  split.cells = Inf,
+  split.tables = Inf
+)
+```
+
+The table contains `r length(pvals_all)` tests due to 15 pairwise comparisons of 6 datasets, on 4 biological significance levels.
+
+## Females
+
+```{r fet-pvalues-females}
+# FET p-values and adjusted p-values for multiple comparisons
+pvals_F <- pair_tabs_F %>% 
+  modify_depth(2, ~ .[["fisher.ts"]]$p.value) %>%
+  unlist() %>% 
+  set_names(gsub("\\.FDR", ", FDR", names(.)))
+adj_pvals_F <- p.adjust(pvals_F, method = "fdr")
+
+pander(
+  cbind(pvals_F, adj_pvals_F),
+  caption = "Female Cases Original and Adjusted p-values",
+  split.cells = Inf,
+  split.tables = Inf
+)
+```
+
+The table contains `r length(pvals_F)` tests due to 6 pairwise comparisons of 4 datasets, on 4 biological significance levels.
+
+## Males
+
+```{r fet-pvalues-males}
+# FET p-values and adjusted p-values for multiple comparisons
+pvals_M <- pair_tabs_M %>% 
+  modify_depth(2, ~ .[["fisher.ts"]]$p.value) %>%
+  unlist() %>% 
+  set_names(gsub("\\.FDR", ", FDR", names(.)))
+adj_pvals_M <- p.adjust(pvals_M, method = "fdr")
+
+pander(
+  cbind(pvals_M, adj_pvals_M),
+  caption = "Male Cases Original and Adjusted p-values",
+  split.cells = Inf,
+  split.tables = Inf
+)
+```
+
+The table contains `r length(pvals_M)` tests due to 6 pairwise comparisons of 4 datasets, on 4 biological significance levels.
