@@ -1,0 +1,565 @@
+---
+title: "Bootstrap Assessment of Age-Associated Enrichment"
+author: "Derek Chiu, Steven McKinney"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	fig.width = 6,
+	fig.height = 4
+)
+```
+
+```{r load}
+library(tidyverse)
+library(pander)
+library(ageassn)
+
+set.seed(713)
+
+## Original read line of code, not working 20190123 - SM
+#sehrdf <- read_rds("../../../../main/data/Data_METABRIC_Expression_Trends/sehrdf.rds")
+
+#sehrdf <- read_rds("./main/data/Data_METABRIC_Expression_Trends/sehrdf.rds")
+#sehrdf <- read_rds(paste(getwd(),"/main/data/Data_METABRIC_Expression_Trends/sehrdf.rds", sep = ""))
+#sehrdf <- readRDS(file=paste(getwd(),"/main/data/Data_METABRIC_Expression_Trends/sehrdf.rds", sep = ""))
+## Unknown problems with above reads 20190123
+## > paste(getwd(),"/main/data/Data_METABRIC_Expression_Trends/sehrdf.rds", sep = "")
+## [1] "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/data/Data_METABRIC_Expression_Trends/sehrdf.rds"
+## > sehrdf <- readRDS(file=paste(getwd(),"/main/data/Data_METABRIC_Expression_Trends/sehrdf.rds", sep = ""))
+## Error in gzfile(file, "rb") : cannot open the connection
+
+
+sehrdf <- readRDS(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/data/Data_METABRIC_Expression_Trends/sehrdf.rds")
+arlmtbldf <- readRDS(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/code/Analysis_METABRIC_Expression_Trends/Memoized/AgeRelated_AllProbes_All_cases_FDR_0p01_All1992Cases_lm_v01.rds")
+
+countdf <- data.frame(intClust=paste("intClust", 1:10), "AbsFCge1.25"=rep(NA_integer_, 10))
+arintClust01lmtbldf <- readRDS(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/code/Analysis_METABRIC_Expression_Trends/Memoized/AgeRelated_AllProbes_iClust_1_FDR_0p01_All1992Cases_lm_v01.rds")
+countdf[1, "AbsFCge1.25"] <- sum(arintClust01lmtbldf$BHadj_and_AgeDependentp)
+arintClust02lmtbldf <- readRDS(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/code/Analysis_METABRIC_Expression_Trends/Memoized/AgeRelated_AllProbes_iClust_2_FDR_0p01_All1992Cases_lm_v01.rds")
+countdf[2, "AbsFCge1.25"] <- sum(arintClust02lmtbldf$BHadj_and_AgeDependentp)
+arintClust03lmtbldf <- readRDS(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/code/Analysis_METABRIC_Expression_Trends/Memoized/AgeRelated_AllProbes_iClust_3_FDR_0p01_All1992Cases_lm_v01.rds")
+countdf[3, "AbsFCge1.25"] <- sum(arintClust03lmtbldf$BHadj_and_AgeDependentp)
+arintClust04lmtbldf <- readRDS(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/code/Analysis_METABRIC_Expression_Trends/Memoized/AgeRelated_AllProbes_iClust_4_FDR_0p01_All1992Cases_lm_v01.rds")
+countdf[4, "AbsFCge1.25"] <- sum(arintClust04lmtbldf$BHadj_and_AgeDependentp)
+arintClust05lmtbldf <- readRDS(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/code/Analysis_METABRIC_Expression_Trends/Memoized/AgeRelated_AllProbes_iClust_5_FDR_0p01_All1992Cases_lm_v01.rds")
+countdf[5, "AbsFCge1.25"] <- sum(arintClust05lmtbldf$BHadj_and_AgeDependentp)
+arintClust06lmtbldf <- readRDS(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/code/Analysis_METABRIC_Expression_Trends/Memoized/AgeRelated_AllProbes_iClust_6_FDR_0p01_All1992Cases_lm_v01.rds")
+countdf[6, "AbsFCge1.25"] <- sum(arintClust06lmtbldf$BHadj_and_AgeDependentp)
+arintClust07lmtbldf <- readRDS(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/code/Analysis_METABRIC_Expression_Trends/Memoized/AgeRelated_AllProbes_iClust_7_FDR_0p01_All1992Cases_lm_v01.rds")
+countdf[7, "AbsFCge1.25"] <- sum(arintClust07lmtbldf$BHadj_and_AgeDependentp)
+arintClust08lmtbldf <- readRDS(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/code/Analysis_METABRIC_Expression_Trends/Memoized/AgeRelated_AllProbes_iClust_8_FDR_0p01_All1992Cases_lm_v01.rds")
+countdf[8, "AbsFCge1.25"] <- sum(arintClust08lmtbldf$BHadj_and_AgeDependentp)
+arintClust09lmtbldf <- readRDS(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/code/Analysis_METABRIC_Expression_Trends/Memoized/AgeRelated_AllProbes_iClust_9_FDR_0p01_All1992Cases_lm_v01.rds")
+countdf[9, "AbsFCge1.25"] <- sum(arintClust09lmtbldf$BHadj_and_AgeDependentp)
+arintClust10lmtbldf <- readRDS(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/code/Analysis_METABRIC_Expression_Trends/Memoized/AgeRelated_AllProbes_iClust_10_FDR_0p01_All1992Cases_lm_v01.rds")
+countdf[10, "AbsFCge1.25"] <- sum(arintClust10lmtbldf$BHadj_and_AgeDependentp)
+
+
+Bpsims <- 100000
+
+fetmat <- matrix(cbind(countdf[, "AbsFCge1.25"], nrow(arintClust10lmtbldf) - countdf[, "AbsFCge1.25"]), ncol = 2)
+
+# Read in trend and no_trend count objects
+list.files(path = "Counts", pattern = "NB[0-9]", full.names = TRUE) %>% 
+  purrr::set_names(
+    gsub(".*(NB[0-9]{1,3})\\.rds", "\\1", .) %>% 
+      paste("res", ., sep = ".")
+  ) %>% 
+  purrr::map(read_rds) %>% 
+  purrr::iwalk(~ assign(.y, .x, 1))
+
+# Read in top probes data objects
+list.files(path = "TopProbes", pattern = "TopProbes", full.names = TRUE) %>% 
+  purrr::set_names(
+    gsub(".*NB(.*)\\.rds", "\\1", .) %>%
+      gsub("_", "\\.", .) %>%
+      paste("agg", ., sep = ".")
+  ) %>% 
+  purrr::map(read_rds) %>% 
+  purrr::iwalk(~ assign(.y, .x, 1))
+```
+
+# Introduction
+
+To assess age-associated enrichment for intClust groups, we conducted a bootstrap analysis. We chose 50, 75, 100, 150, 200, and 300 bootstrap samples from each of the 10 intClust groups, and repeated this process 20 times. Each iteration repeat fitted a set of linear models predicting each gene target (48803 total) from age at diagnosis. An FDR of 0.01 was used for BH-adjusted p-values. 
+
+# Tests of Independence
+
+Because of a mix of small and large expected counts in several of the tables, we obtained p-values for Fisher's exact test using Monte Carlo simulation with B = `r sprintf("%.0f", Bpsims)` replicates. For each `NiBoot` size, we obtained 20 p-values, one for each bootstrap replicate. The contingency tables are cross-tabulations between intClust group (1-10) and probes exhibiting age dependent status (yes/no).
+
+## Pearson Chi-Squared Tests
+
+The distribution of p-values from Pearson's chi-square test for independence is shown below each bootstrap size table for the 20 replicates.
+
+## Fisher's Exact Tests
+
+The distribution of p-values from Fisher's exact test for independence is shown below for the 20 replicates.  Because the p-values were obtained using simulation with B = `r sprintf("%.0f", Bpsims)` replicates, the minimum p-value will be `r sprintf("%.7f", 1.0/Bpsims)` 
+
+
+\pagebreak
+
+
+## Raw data iClust enrichment test
+```{r iClust_rawAgeAssoc, results = "asis"}
+pandoc.table(table(sehrdf$iClustf), caption = "intClust number of cases")
+pandoc.table(countdf, caption = "Age associated gene counts (max(Abs(FC)) > 1.25) within intClust groups.",
+             col.names = c("Group", "max(Abs(FC)) > 1.25"))
+```
+
+Fisher's exact test p < `r sprintf("%.7f", signif(fisher.test(fetmat, simulate = TRUE, B = Bpsims)$p.value, digits = 3))` 
+
+There is clear evidence of age associated enrichment within some of the intClust groups.
+
+
+intClust groups 3, 4 and 8 appear to show the most age associated genes.  However, those intClust groups also have the largest sample sizes, so detection of trends therein is more likely.  Caution is warranted with regards to attributing age association tendencies to those intClust groups relative to others. 
+
+To assess the effect of sample size, we performed bootstrap analyses, selecting equally sized cohorts with replacement from within each intClust group, and counting the number of age-associated genes.
+
+\pagebreak
+
+
+# NB 50 Results
+
+## Table means
+
+```{r Tmeans_50, results = "asis"}
+tm.nb50 <- boot_summarize(res.NB050, fun = "mean")
+pandoc.table(tm.nb50, caption = "Average trend counts across bootstrap replications for each intClust group of size 50")
+```
+
+## Table Medians
+
+```{r Tmedians_50, results = "asis"}
+tmmed.nb50 <- boot_summarize(res.NB050, fun = "median")
+pandoc.table(tmmed.nb50, caption = "Median trend counts across bootstrap replications for each intClust group of size 50")
+```
+
+## Top Probe Counts
+
+### FC = 1.25
+
+```{r T_top_probes_50_fc_1.25, results='asis'}
+modify_depth(agg.050.FC1p25, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 50 for FC 1.25")
+```
+
+### FC = 2
+
+```{r T_top_probes_50_fc_2, results='asis'}
+modify_depth(agg.050.FC2, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 50 for FC 2")
+```
+
+### FC = 4
+
+```{r T_top_probes_50_fc_4, results='asis'}
+modify_depth(agg.050.FC4, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 50 for FC 4")
+```
+
+## Pearson Chi-Square Tests
+
+```{r T_chisq_50}
+map_dbl(res.NB050, ~ signif(chisq.test(.x, simulate.p.value = FALSE)$p.value, digits = 3)) %>% 
+  table(pvalue = .)
+```
+
+## Fisher's Exact Tests
+
+```{r T_fisher_50}
+map_dbl(res.NB050, ~ signif(fisher.test(.x, simulate.p.value = TRUE, B = Bpsims)$p.value, 
+                            digits = 3)) %>% 
+  table(pvalue = .)
+```
+
+
+\pagebreak
+
+# NB 75 Results
+
+## Table Means
+
+```{r Tmeans_75, results = "asis"}
+tm.nb75 <- boot_summarize(res.NB075, fun = "mean")
+pandoc.table(tm.nb75, caption = "Average trend counts across bootstrap replications for each intClust group of size 75")
+```
+
+## Table Medians
+
+```{r Tmedians_75, results = "asis"}
+tmmed.nb75 <- boot_summarize(res.NB075, fun = "median")
+pandoc.table(tmmed.nb75, caption = "Median trend counts across bootstrap replications for each intClust group of size 75")
+```
+
+## Top Probe Counts
+
+### FC = 1.25
+
+```{r T_top_probes_75_fc_1.25, results='asis'}
+modify_depth(agg.075.FC1p25, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 75 for FC 1.25")
+```
+
+### FC = 2
+
+```{r T_top_probes_75_fc_2, results='asis'}
+modify_depth(agg.075.FC2, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 75 for FC 2")
+```
+
+### FC = 4
+
+```{r T_top_probes_75_fc_4, results='asis'}
+modify_depth(agg.075.FC4, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 75 for FC 4")
+```
+
+## Pearson Chi-Square Tests
+
+```{r T_chisq_75}
+map_dbl(res.NB075, ~ signif(chisq.test(.x, simulate.p.value = FALSE)$p.value, digits = 3)) %>% 
+  table(pvalue = .)
+```
+
+## Fisher's Exact Tests
+
+```{r T_fisher_75}
+map_dbl(res.NB075, ~ signif(fisher.test(.x, simulate.p.value = TRUE, B = Bpsims)$p.value, 
+                            digits = 3)) %>% 
+  table(pvalue = .)
+```
+
+
+\pagebreak
+
+# NB 100 Results
+
+## Table Means
+
+```{r Tmeans_100, results = "asis"}
+tm.nb100 <- boot_summarize(res.NB100, fun = "mean")
+pandoc.table(tm.nb100, caption = "Average trend counts across bootstrap replications for each intClust group of size 100")
+```
+
+## Table Medians
+
+```{r Tmedians_100, results = "asis"}
+tmmed.nb100 <- boot_summarize(res.NB100, fun = "median")
+pandoc.table(tmmed.nb100, caption = "Median trend counts across bootstrap replications for each intClust group of size 100")
+```
+
+## Top Probe Counts
+
+### FC = 1.25
+
+```{r T_top_probes_100_fc_1.25, results='asis'}
+modify_depth(agg.100.FC1p25, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 100 for FC 1.25")
+```
+
+### FC = 2
+
+```{r T_top_probes_100_fc_2, results='asis'}
+modify_depth(agg.100.FC2, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 100 for FC 2")
+```
+
+### FC = 4
+
+```{r T_top_probes_100_fc_4, results='asis'}
+modify_depth(agg.100.FC4, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 100 for FC 4")
+```
+
+## Pearson Chi-Square Tests
+
+```{r T_chisq_100}
+map_dbl(res.NB100, ~ signif(chisq.test(.x, simulate.p.value = FALSE)$p.value, digits = 3)) %>% 
+  table(pvalue = .)
+```
+
+## Fisher's Exact Tests
+
+```{r T_fisher_100}
+map_dbl(res.NB100, ~ signif(fisher.test(.x, simulate.p.value = TRUE, B = Bpsims)$p.value, 
+                            digits = 3)) %>% 
+  table(pvalue = .)
+```
+
+
+\pagebreak
+
+
+# NB 150 Results
+
+## Table Means
+
+```{r Tmeans_150, results = "asis"}
+tm.nb150 <- boot_summarize(res.NB150, fun = "mean")
+pandoc.table(tm.nb150, caption = "Average trend counts across bootstrap replications for each intClust group of size 150")
+```
+
+## Table Medians
+
+```{r Tmedians_150, results = "asis"}
+tmmed.nb150 <- boot_summarize(res.NB150, fun = "median")
+pandoc.table(tmmed.nb150, caption = "Median trend counts across bootstrap replications for each intClust group of size 150")
+```
+
+## Top Probe Counts
+
+### FC = 1.25
+
+```{r T_top_probes_150_fc_1.25, results='asis'}
+modify_depth(agg.150.FC1p25, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 150 for FC 1.25")
+```
+
+### FC = 2
+
+```{r T_top_probes_150_fc_2, results='asis'}
+modify_depth(agg.150.FC2, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 150 for FC 2")
+```
+
+### FC = 4
+
+```{r T_top_probes_150_fc_4, results='asis'}
+modify_depth(agg.150.FC4, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 150 for FC 4")
+```
+
+## Pearson Chi-Square Tests
+
+```{r T_chisq_150}
+map_dbl(res.NB150, ~ signif(chisq.test(.x, simulate.p.value = FALSE)$p.value, digits = 3)) %>% 
+  table(pvalue = .)
+```
+
+## Fisher's Exact Tests
+
+```{r T_fisher_150}
+map_dbl(res.NB150, ~ signif(fisher.test(.x, simulate.p.value = TRUE, B = Bpsims)$p.value, 
+                            digits = 3)) %>% 
+  table(pvalue = .)
+```
+
+
+\pagebreak
+
+
+# NB 200 Results
+
+## Table Means
+
+```{r Tmeans_200, results = "asis"}
+tm.nb200 <- boot_summarize(res.NB200, fun = "mean")
+pandoc.table(tm.nb200, caption = "Average trend counts across bootstrap replications for each intClust group of size 200")
+```
+
+## Table Medians
+
+```{r Tmedians_200, results = "asis"}
+tmmed.nb200 <- boot_summarize(res.NB200, fun = "median")
+pandoc.table(tmmed.nb200, caption = "Median trend counts across bootstrap replications for each intClust group of size 200")
+```
+
+## Top Probe Counts
+
+### FC = 1.25
+
+```{r T_top_probes_200_fc_1.25, results='asis'}
+modify_depth(agg.200.FC1p25, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 200 for FC 1.25")
+```
+
+### FC = 2
+
+```{r T_top_probes_200_fc_2, results='asis'}
+modify_depth(agg.200.FC2, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 200 for FC 2")
+```
+
+### FC = 4
+
+```{r T_top_probes_200_fc_4, results='asis'}
+modify_depth(agg.200.FC4, 2, length) %>% 
+  bind_rows() %>% 
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 200 for FC 4")
+```
+
+## Pearson Chi-Square Tests
+
+```{r T_chisq_200}
+map_dbl(res.NB200, ~ signif(chisq.test(.x, simulate.p.value = FALSE)$p.value, digits = 3)) %>% 
+  table(pvalue = .)
+```
+
+## Fisher's Exact Tests
+
+```{r T_fisher_200}
+map_dbl(res.NB200, ~ signif(fisher.test(.x, simulate.p.value = TRUE, B = Bpsims)$p.value, 
+                            digits = 3)) %>% 
+  table(pvalue = .)
+```
+
+
+\pagebreak
+
+# NB 300 Results
+
+## Table Means
+
+```{r Tmeans_300, results = "asis"}
+tm.nb300 <- boot_summarize(res.NB300, fun = "mean")
+pandoc.table(tm.nb300, caption = "Average trend counts across bootstrap replications for each intClust group of size 300")
+```
+
+## Table Medians
+
+```{r Tmedians_300, results = "asis"}
+tmmed.nb300 <- boot_summarize(res.NB300, fun = "median")
+pandoc.table(tmmed.nb300, caption = "Median trend counts across bootstrap replications for each intClust group of size 300")
+```
+
+## Top Probe Counts
+
+### FC = 1.25
+
+```{r T_top_probes_300_fc_1.25, results='asis'}
+modify_depth(agg.300.FC1p25, 2, length) %>% 
+  bind_rows() %>%
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 300 for FC 1.25")
+```
+
+### FC = 2
+
+```{r T_top_probes_300_fc_2, results='asis'}
+modify_depth(agg.300.FC2, 2, length) %>% 
+  bind_rows() %>%
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 300 for FC 2")
+```
+
+### FC = 4
+
+```{r T_top_probes_300_fc_4, results='asis'}
+modify_depth(agg.300.FC4, 2, length) %>% 
+  bind_rows() %>%
+  rownames_to_column("group") %>%
+  pandoc.table(caption = "Number of Probes chosen in 10, 15, 19, 20 times out of 20 bootstrap replicates of size 300 for FC 4")
+```
+
+## Pearson Chi-Square Tests
+
+```{r T_chisq_300}
+map_dbl(res.NB300, ~ signif(chisq.test(.x, simulate.p.value = FALSE)$p.value, digits = 3)) %>% 
+  table(pvalue = .)
+```
+
+## Fisher's Exact Tests
+
+```{r T_fisher_300}
+map_dbl(res.NB300, ~ signif(fisher.test(.x, simulate.p.value = TRUE, B = Bpsims)$p.value, 
+                            digits = 3)) %>% 
+  table(pvalue = .)
+```
+
+
+\pagebreak
+
+
+# Boxplots
+
+We can also visualize the results using boxplots. Each of the following boxplots shows the distribution of the proportion of age-associated gene targets within each intClust group across the 20 replicates. There is a figure for each of the `NiBoot` sizes chosen.
+
+## NiBoot = 50
+
+```{r niboot_50}
+boot_boxplot(res.NB050, title = "Proportion of age-associated gene targets per intClust group\non 20 replicates of bootstrapped samples of size 50")
+```
+
+## NiBoot = 75
+
+```{r niboot_75}
+boot_boxplot(res.NB075, title = "Proportion of age-associated gene targets per intClust group\non 20 replicates of bootstrapped samples of size 75")
+```
+
+## NiBoot = 100
+
+```{r niboot_100}
+pdf(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/code/Analysis_METABRIC_Expression_Trends/Bootstrap/Plots/Bootstrap_BoxPlots_N100.pdf", width=4, height = 2.5, useDingbats=FALSE)
+boot_boxplot(res.NB100, title = "Proportion of age-associated gene targets per intClust group\non 20 replicates of bootstrapped samples of size 100")
+dev.off()
+```
+
+## NiBoot = 150
+
+```{r niboot_150}
+boot_boxplot(res.NB150, title = "Proportion of age-associated gene targets per intClust group\non 20 replicates of bootstrapped samples of size 150")
+```
+
+## NiBoot = 200
+
+```{r niboot_200}
+pdf(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/code/Analysis_METABRIC_Expression_Trends/Bootstrap/Plots/Bootstrap_BoxPlots_N200.pdf", width=4, height = 2.5, useDingbats=FALSE)
+boot_boxplot(res.NB200, title = "Proportion of age-associated gene targets per intClust group\non 20 replicates of bootstrapped samples of size 200")
+dev.off()
+```
+
+## NiBoot = 300
+
+```{r niboot_300}
+pdf(file = "/Users/stevenmckinney/git/github/BrCa_Age_Associated2/main/code/Analysis_METABRIC_Expression_Trends/Bootstrap/Plots/Bootstrap_BoxPlots_N300.pdf", width=4, height = 2.5, useDingbats=FALSE)
+boot_boxplot(res.NB300, title = "Proportion of age-associated gene targets per intClust group\non 20 replicates of bootstrapped samples of size 300")
+dev.off()
+```
+
+\pagebreak
+
+## Conclusions
+
+Keeping sample sizes equal across the intClust groups, intClust 2 and intClust 6 show the largest number of age associated genes followed by intClust 1.  These are groups with smaller case counts, so will have larger variance associated with them in general.  Recall that intClusts 3, 4 and 8 showed large numbers of age-associated genes in the original cohort.
+
+intClust 10 shows few age associated genes even though it is one of the larger sample size groups, both in the original data and in the bootstrap runs.  intClusts 5 and 7 exhibit similar behaviour.  Hence for some of the intClust groups we can infer a lack of age associated behaviour.
+
+Thus caution is warranted in interpreting reasons associated with the number of age-associated genes within intClust groups.  Further assessment of this outcome will need to be performed on future data sets with more equal intClust group sizes.
+

@@ -1,0 +1,15 @@
+# Bootstrap Analysis
+
+When assessing biological significance of biomarkers to age association within IntClust subgroups (1-10), we need to take into account their differential group sizes. Larger groups have a greater affinity for significant findings because they have more data, and smaller groups become underpowered. To test whether the results obtained from using the original IntClust subgroup sizes are reliable, we run a bootstrap analysis where the group sizes are normalized.
+
+The number of bootstrap samples (NB) we chose for resampling within each IntClust subgroup were 50, 75, 100, 150, 200, and 300, so that we could capture the range of the true subgroup sizes. For each NB, we performed 20 replicates in order to account for some sampling variability. Thereafter, the usual linear models were performed on these bootstrapped datasets to assess age association with biomarker expression in the METABRIC database.
+
+The contents of this directory include:
+
+ - The [Counts](https://github.com/BCCRCMO/BrCa_Age_Associated/tree/master/main/code/Analysis_METABRIC_Expression_Trends/Bootstrap/Counts) of the number of probes with and without an age-dependent trend for each NB size. The counts are separated into a list of 20 tables (one for each replicate), with each table showing the counts for each IntClust subgroup. There are also two supplementary objects with the suffix `test1` and `test2` summarizing some sanity checks. See comments at [this section](https://github.com/BCCRCMO/BrCa_Age_Associated/blob/master/main/code/Analysis_METABRIC_Expression_Trends/METABRIC_Expression_Trends_Analysis.R#L360) of the analysis script.
+ 
+ - The [Stats](https://github.com/BCCRCMO/BrCa_Age_Associated/tree/master/main/code/Analysis_METABRIC_Expression_Trends/Bootstrap/Stats) for the linear models run on the bootstrap data, including p-values and fold changes. Each object is suffixed with the NB size and the replicate number.
+ 
+ - The [TopProbes](https://github.com/BCCRCMO/BrCa_Age_Associated/tree/master/main/code/Analysis_METABRIC_Expression_Trends/Bootstrap/TopProbes) directory shows the names of the top probes (and genes) at each NB size and fold change (1.25, 2, 4).
+ 
+ - An RMarkdown [report](https://github.com/BCCRCMO/BrCa_Age_Associated/blob/master/main/code/Analysis_METABRIC_Expression_Trends/Bootstrap/AgeDependent_Bootstrap.Rmd) summarizing the above findings, rendered in [Word](https://github.com/BCCRCMO/BrCa_Age_Associated/blob/master/main/code/Analysis_METABRIC_Expression_Trends/Bootstrap/AgeDependent_Bootstrap.docx) and [PDF](https://github.com/BCCRCMO/BrCa_Age_Associated/blob/master/main/code/Analysis_METABRIC_Expression_Trends/Bootstrap/AgeDependent_Bootstrap.pdf) formats. There is also a Word document with additional [manual edits](https://github.com/BCCRCMO/BrCa_Age_Associated/blob/master/main/code/Analysis_METABRIC_Expression_Trends/Bootstrap/AgeDependent_Bootstrap_ManualEdits.docx).
