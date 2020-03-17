@@ -1,0 +1,2937 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={METABRIC BrCa Age Dependent Fisher Exact Tests on NKI ER binding},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{METABRIC BrCa Age Dependent Fisher Exact Tests on NKI ER binding}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{}
+  \preauthor{}\postauthor{}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{July 23, 2018}
+
+
+\begin{document}
+\maketitle
+
+\section{FET Tables All Cases}\label{fet-tables-all-cases}
+
+\subsection{All Cases, n = 1992, FDR =
+0.01}\label{all-cases-n-1992-fdr-0.01}
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table All Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+635\\
+22.09\%\\
+17.34\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2240\\
+77.91\%\\
+14.65\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+799\\
+24.93\%\\
+21.81\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2406\\
+75.07\%\\
+15.74\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+2229\\
+17.32\%\\
+60.85\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+10641\\
+82.68\%\\
+69.61\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+3663\\
+19.33\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+15287\\
+80.67\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics All Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+2.9e-24\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+
+\section{FET Tables by IntClust
+subgroups}\label{fet-tables-by-intclust-subgroups}
+
+\subsection{IntClust1, n = 140, FDR =
+0.01}\label{intclust1-n-140-fdr-0.01}
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table IntClust1 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+1\\
+0.03\%\\
+20.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2874\\
+99.97\%\\
+15.17\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+2\\
+0.06\%\\
+40.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3203\\
+99.94\%\\
+16.91\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+2\\
+0.02\%\\
+40.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12868\\
+99.98\%\\
+67.92\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+5\\
+0.03\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18945\\
+99.97\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics IntClust1 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+0.19\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# IntClust2, n = 72, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table IntClust2 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2875\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3205\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12870\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18950\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics IntClust2 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# IntClust3, n = 294, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table IntClust3 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+99\\
+3.44\%\\
+14.62\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2776\\
+96.56\%\\
+15.19\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+161\\
+5.02\%\\
+23.78\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3044\\
+94.98\%\\
+16.66\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+417\\
+3.24\%\\
+61.60\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12453\\
+96.76\%\\
+68.15\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+677\\
+3.57\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18273\\
+96.43\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics IntClust3 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+1.6e-05\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# IntClust4, n = 344, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table IntClust4 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+49\\
+1.70\%\\
+11.92\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2826\\
+98.30\%\\
+15.24\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+88\\
+2.75\%\\
+21.41\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3117\\
+97.25\%\\
+16.81\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+274\\
+2.13\%\\
+66.67\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12596\\
+97.87\%\\
+67.94\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+411\\
+2.17\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18539\\
+97.83\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics IntClust4 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+0.019\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# IntClust5, n = 191, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table IntClust5 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2875\\
+100.00\%\\
+15.17\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+1\\
+0.03\%\\
+25.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3204\\
+99.97\%\\
+16.91\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+3\\
+0.02\%\\
+75.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12867\\
+99.98\%\\
+67.91\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+4\\
+0.02\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18946\\
+99.98\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics IntClust5 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+0.79\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# IntClust6, n = 86, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table IntClust6 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2875\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3205\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12870\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18950\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics IntClust6 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# IntClust7, n = 193, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table IntClust7 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+1\\
+0.03\%\\
+10.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2874\\
+99.97\%\\
+15.17\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+2\\
+0.06\%\\
+20.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3203\\
+99.94\%\\
+16.91\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+7\\
+0.05\%\\
+70.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12863\\
+99.95\%\\
+67.91\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+10\\
+0.05\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18940\\
+99.95\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics IntClust7 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+0.9\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# IntClust8, n = 300, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table IntClust8 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+67\\
+2.33\%\\
+13.45\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2808\\
+97.67\%\\
+15.22\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+118\\
+3.68\%\\
+23.69\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3087\\
+96.32\%\\
+16.73\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+313\\
+2.43\%\\
+62.85\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12557\\
+97.57\%\\
+68.05\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+498\\
+2.63\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18452\\
+97.37\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics IntClust8 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+0.00042\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# IntClust9, n = 146, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table IntClust9 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2875\\
+100.00\%\\
+15.17\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3205\\
+100.00\%\\
+16.91\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+1\\
+0.01\%\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12869\\
+99.99\%\\
+67.91\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+1\\
+0.01\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18949\\
+99.99\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics IntClust9 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# IntClust10, n = 226, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table IntClust10 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2875\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3205\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12870\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18950\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics IntClust10 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+
+\section{FET Tables by PAM50
+subgroups}\label{fet-tables-by-pam50-subgroups}
+
+\subsection{PAM50 Basal, n = 331, FDR =
+0.01}\label{pam50-basal-n-331-fdr-0.01}
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table PAM50 Basal Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2875\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3205\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12870\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18950\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics PAM50 Basal Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# PAM50 Her2, n = 240, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table PAM50 Her2 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2875\\
+100.00\%\\
+15.18\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+5\\
+0.16\%\\
+45.45\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3200\\
+99.84\%\\
+16.90\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+6\\
+0.05\%\\
+54.55\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12864\\
+99.95\%\\
+67.92\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+11\\
+0.06\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18939\\
+99.94\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics PAM50 Her2 Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+0.036\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# PAM50 LumA, n = 721, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table PAM50 LumA Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+347\\
+12.07\%\\
+17.26\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2528\\
+87.93\%\\
+14.92\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+462\\
+14.41\%\\
+22.97\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2743\\
+85.59\%\\
+16.19\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+1202\\
+9.34\%\\
+59.77\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+11668\\
+90.66\%\\
+68.88\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+2011\\
+10.61\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+16939\\
+89.39\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics PAM50 LumA Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+9.5e-17\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# PAM50 LumB, n = 492, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table PAM50 LumB Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+169\\
+5.88\%\\
+20.41\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2706\\
+94.12\%\\
+14.93\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+169\\
+5.27\%\\
+20.41\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3036\\
+94.73\%\\
+16.75\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+490\\
+3.81\%\\
+59.18\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12380\\
+96.19\%\\
+68.31\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+828\\
+4.37\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18122\\
+95.63\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics PAM50 LumB Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+2.3e-07\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# PAM50 Normal, n = 202, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table PAM50 Normal Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2875\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3205\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12870\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18950\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics PAM50 Normal Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+
+\section{FET Tables by ER/HER2
+status}\label{fet-tables-by-erher2-status}
+
+\subsection{ER- HER2-, n = 335, FDR =
+0.01}\label{er--her2--n-335-fdr-0.01}
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table ER- HER2- Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+2\\
+0.07\%\\
+13.33\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2873\\
+99.93\%\\
+15.17\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+2\\
+0.06\%\\
+13.33\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3203\\
+99.94\%\\
+16.92\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+11\\
+0.09\%\\
+73.33\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12859\\
+99.91\%\\
+67.91\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+15\\
+0.08\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18935\\
+99.92\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics ER- HER2- Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# ER- HER2+, n = 139, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table ER- HER2+ Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2875\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3205\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12870\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18950\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics ER- HER2+ Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# ER+ HER2-, n = 1408, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table ER+ HER2- Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+351\\
+12.21\%\\
+14.96\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2524\\
+87.79\%\\
+15.20\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+546\\
+17.04\%\\
+23.27\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2659\\
+82.96\%\\
+16.01\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+1449\\
+11.26\%\\
+61.76\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+11421\\
+88.74\%\\
+68.78\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+2346\\
+12.38\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+16604\\
+87.62\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics ER+ HER2- Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+9.2e-17\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+\#\# ER+ HER2+, n = 110, FDR = 0.01
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{FET Table ER+ HER2+ Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2875\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3205\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12870\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18950\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{FET Statistics ER+ HER2+ Cases, FDR = 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+Statistics\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Value\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+p.value\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+alternative\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+two.sided\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+
+
+\end{document}

@@ -1,0 +1,290 @@
+---
+title: "Bootstrap Assessment of Age-Associated Enrichment"
+author: "Derek Chiu"
+date: "April 20, 2017"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	fig.width = 6,
+	fig.height = 4
+)
+```
+
+```{r load}
+library(tidyverse)
+library(magrittr)
+library(pander)
+res.nb50 <- read_rds("AgeDependent_bootstrap_nb50.rds")
+res.nb75 <- read_rds("AgeDependent_bootstrap_nb75.rds")
+res.nb100 <- read_rds("AgeDependent_bootstrap_nb100.rds")
+res.nb150 <- read_rds("AgeDependent_bootstrap_nb150.rds")
+res.nb200 <- read_rds("AgeDependent_bootstrap_nb200.rds")
+res.nb300 <- read_rds("AgeDependent_bootstrap_nb300.rds")
+
+# Helper functions
+munge_boot <- function(data) {
+ # Takes input from data result in lm_boot
+  bp <- data %>% 
+    map(as.data.frame) %>% 
+    bind_cols() %>% 
+    set_colnames(paste(names(.), rep(seq_len(ncol(.) / 2), each = 2))) %>% 
+    mutate(group = factor(seq_len(nrow(.)))) %>% 
+    gather(pattern, value, -contains("group")) %>% 
+    separate(pattern, c("pattern", "rep"), sep = " ", convert = TRUE) %>% 
+    spread(pattern, value) %>% 
+    mutate(proportion = trend / (no_trend + trend))
+  return(bp)
+}
+
+plot_boot <- function(data, title = NULL) {
+  # Boxplot for each group, showing distribution of bootstrap proportions
+  dat <- munge_boot(data)
+  p <- ggplot(dat, aes(x = group, y = proportion)) +
+    geom_boxplot() +
+    geom_jitter(position = position_jitter(width = 0.1, height = 0),
+                color = "red")
+  
+  if (!is.null(title))
+    p + ggtitle(title)
+  else
+    p
+}
+```
+
+# Introduction
+
+To assess association of age-associated enrichment to IntClust group membership, we conduct a bootstrap analysis. We choose 50, 75, 100, 150, 200, and 300 bootstrap samples from each of the 10 IntClust groups, and repeat this process 20 times. Each iteration fits a set of linear models predicting each gene target (48803 total) from age at diagnosis. An FDR of 0.01 was used for BH-adjusted p-values. Over 87 million linear models were fitted for this analysis.
+
+# Tests of Independence
+
+Because of small expected counts in several of the tables, we obtain p-values using Monte Carlo simulation with B = 10000 replicates for both of the following tests of independence. For each `NiBoot` size, we obtain 20 p-values, one for each bootstrap replicate. The contingency tables are cross-tabulations between IntClust group (1-10) and age dependence status (yes/no).
+
+## Chi-Squared Tests
+
+The distribution of p-values is shown below for each of the 20 replicates:
+
+### NiBoot = 50
+
+```{r chisq_50}
+map_dbl(res.nb50, ~ chisq.test(.x, simulate.p.value = TRUE)$p.value) %>% 
+  table(pvalue = .)
+```
+
+### NiBoot = 75
+
+```{r chisq_75}
+map_dbl(res.nb75, ~ chisq.test(.x, simulate.p.value = TRUE)$p.value) %>% 
+  table(pvalue = .)
+```
+
+### NiBoot = 100
+
+```{r chisq_100}
+map_dbl(res.nb100, ~ chisq.test(.x, simulate.p.value = TRUE)$p.value) %>% 
+  table(pvalue = .)
+```
+
+### NiBoot = 150
+
+```{r chisq_150}
+map_dbl(res.nb150, ~ chisq.test(.x, simulate.p.value = TRUE)$p.value) %>% 
+  table(pvalue = .)
+```
+
+### NiBoot = 200
+
+```{r chisq_200}
+map_dbl(res.nb200, ~ chisq.test(.x, simulate.p.value = TRUE)$p.value) %>% 
+  table(pvalue = .)
+```
+
+### NiBoot = 300
+
+```{r chisq_300}
+map_dbl(res.nb300, ~ chisq.test(.x, simulate.p.value = TRUE)$p.value) %>% 
+  table(pvalue = .)
+```
+
+## Fisher's Exact Tests
+
+The distribution of p-values is shown below for each of the 20 replicates:
+
+### NiBoot = 50
+
+```{r fisher_50}
+map_dbl(res.nb50, ~ fisher.test(.x, simulate.p.value = TRUE)$p.value) %>% 
+  table(pvalue = .)
+```
+
+### NiBoot = 75
+
+```{r fisher_75}
+map_dbl(res.nb75, ~ fisher.test(.x, simulate.p.value = TRUE)$p.value) %>% 
+  table(pvalue = .)
+```
+
+### NiBoot = 100
+
+```{r fisher_100}
+map_dbl(res.nb100, ~ fisher.test(.x, simulate.p.value = TRUE)$p.value) %>% 
+  table(pvalue = .)
+```
+
+### NiBoot = 150
+
+```{r fisher_150}
+map_dbl(res.nb150, ~ fisher.test(.x, simulate.p.value = TRUE)$p.value) %>% 
+  table(pvalue = .)
+```
+
+### NiBoot = 200
+
+```{r fisher_200}
+map_dbl(res.nb200, ~ fisher.test(.x, simulate.p.value = TRUE)$p.value) %>% 
+  table(pvalue = .)
+```
+
+### NiBoot = 300
+
+```{r fisher_300}
+map_dbl(res.nb300, ~ fisher.test(.x, simulate.p.value = TRUE)$p.value) %>% 
+  table(pvalue = .)
+```
+
+## Table means
+
+```{r Tmeans_50, results = "asis"}
+tm.nb50 <- res.nb50 %>% 
+  munge_boot() %>% 
+  group_by(group) %>% 
+  summarize(avg_trend = mean(trend),
+            avg_no_trend = mean(no_trend)) %>% 
+  mutate(group = as.character(group)) %>% 
+  bind_rows(
+    summarize(., group = "average",
+              avg_trend = mean(avg_trend),
+              avg_no_trend = mean(avg_no_trend))
+  )
+pandoc.table(tm.nb50, caption = "Average Trend Counts across reps for each IntClust group of size 50")
+```
+
+```{r Tmeans_75, results = "asis"}
+tm.nb75 <- res.nb75 %>% 
+  munge_boot() %>% 
+  group_by(group) %>% 
+  summarize(avg_trend = mean(trend),
+            avg_no_trend = mean(no_trend)) %>% 
+  mutate(group = as.character(group)) %>% 
+  bind_rows(
+    summarize(., group = "average",
+              avg_trend = mean(avg_trend),
+              avg_no_trend = mean(avg_no_trend))
+  )
+pandoc.table(tm.nb75, caption = "Average Trend Counts across reps for each IntClust group of size 75")
+```
+
+```{r Tmeans_100, results = "asis"}
+tm.nb100 <- res.nb100 %>% 
+  munge_boot() %>% 
+  group_by(group) %>% 
+  summarize(avg_trend = mean(trend),
+            avg_no_trend = mean(no_trend)) %>% 
+  mutate(group = as.character(group)) %>% 
+  bind_rows(
+    summarize(., group = "average",
+              avg_trend = mean(avg_trend),
+              avg_no_trend = mean(avg_no_trend))
+  )
+pandoc.table(tm.nb100, caption = "Average Trend Counts across reps for each IntClust group of size 100")
+```
+
+```{r Tmeans_150, results = "asis"}
+tm.nb150 <- res.nb150 %>% 
+  munge_boot() %>% 
+  group_by(group) %>% 
+  summarize(avg_trend = mean(trend),
+            avg_no_trend = mean(no_trend)) %>% 
+  mutate(group = as.character(group)) %>% 
+  bind_rows(
+    summarize(., group = "average",
+              avg_trend = mean(avg_trend),
+              avg_no_trend = mean(avg_no_trend))
+  )
+pandoc.table(tm.nb150, caption = "Average Trend Counts across reps for each IntClust group of size 150")
+```
+
+```{r Tmeans_200, results = "asis"}
+tm.nb200 <- res.nb200 %>% 
+  munge_boot() %>% 
+  group_by(group) %>% 
+  summarize(avg_trend = mean(trend),
+            avg_no_trend = mean(no_trend)) %>% 
+  mutate(group = as.character(group)) %>% 
+  bind_rows(
+    summarize(., group = "average",
+              avg_trend = mean(avg_trend),
+              avg_no_trend = mean(avg_no_trend))
+  )
+pandoc.table(tm.nb200, caption = "Average Trend Counts across reps for each IntClust group of size 200")
+```
+
+```{r Tmeans_300, results = "asis"}
+tm.nb300 <- res.nb300 %>% 
+  munge_boot() %>% 
+  group_by(group) %>% 
+  summarize(avg_trend = mean(trend),
+            avg_no_trend = mean(no_trend)) %>% 
+  mutate(group = as.character(group)) %>% 
+  bind_rows(
+    summarize(., group = "average",
+              avg_trend = mean(avg_trend),
+              avg_no_trend = mean(avg_no_trend))
+  )
+pandoc.table(tm.nb300, caption = "Average Trend Counts across reps for each IntClust group of size 300")
+```
+
+
+# Boxplots
+
+We can also visualize the results using boxplots. Each of the following boxplots shows the distribution of the proportion of age-associated gene targets within each IntClust group across the 20 replicates. There is a figure for each of the `NiBoot` sizes chosen.
+
+## NiBoot = 50
+
+```{r niboot_50}
+plot_boot(res.nb50, title = "Proportion of Age-Associated Gene Targets per IntClust group\non 20 replicates of bootstrapped samples of size 50")
+```
+
+## NiBoot = 75
+
+```{r niboot_75}
+plot_boot(res.nb75, title = "Proportion of Age-Associated Gene Targets per IntClust group\non 20 replicates of bootstrapped samples of size 75")
+```
+
+## NiBoot = 100
+
+```{r niboot_100}
+plot_boot(res.nb100, title = "Proportion of Age-Associated Gene Targets per IntClust group\non 20 replicates of bootstrapped samples of size 100")
+```
+
+## NiBoot = 150
+
+```{r niboot_150}
+plot_boot(res.nb150, title = "Proportion of Age-Associated Gene Targets per IntClust group\non 20 replicates of bootstrapped samples of size 150")
+```
+
+## NiBoot = 200
+
+```{r niboot_200}
+plot_boot(res.nb200, title = "Proportion of Age-Associated Gene Targets per IntClust group\non 20 replicates of bootstrapped samples of size 200")
+```
+
+## NiBoot = 300
+
+```{r niboot_300}
+plot_boot(res.nb300, title = "Proportion of Age-Associated Gene Targets per IntClust group\non 20 replicates of bootstrapped samples of size 300")
+```

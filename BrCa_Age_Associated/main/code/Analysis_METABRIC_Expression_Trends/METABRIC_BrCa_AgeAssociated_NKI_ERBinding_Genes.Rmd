@@ -1,0 +1,131 @@
+---
+title: "METABRIC BrCa Age Dependent Fisher Exact Tests on NKI ER binding"
+output:
+  pdf_document:
+    keep_tex: yes
+  word_document: default
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	results = "asis"
+)
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+```{r load}
+# Load packages
+library(tidyverse)
+library(fs)
+library(glue)
+library(cli)
+library(pander)
+library(ageassn)
+panderOptions("digits", 2)
+panderOptions("knitr.auto.asis", FALSE)
+
+## Run METABRIC_Expression_Trends_FET_tables.R first 
+
+# Constants
+fdr <- 0.01
+
+# FET data directory
+fet.dir <- "main/code/Analysis_METABRIC_Expression_Trends/FET_tables"
+
+# Case Counts object
+sehdf <- read_rds("main/data/Data_METABRIC_Expression_Trends/sehdf.rds")
+
+# Header and caption strings
+headers <- "## {group}{names(ncases)}, n = {ncases}, FDR = {fdr}"
+captions <- "FET {group}{names(ncases)} Cases, FDR = {fdr}"
+```
+
+```{r load-fisher-exact-test}
+fet_all <- dir_ls(fet.dir, regexp = "All_cases") %>%
+  map(readRDS)
+fet_intclust <- dir_ls(fet.dir, regexp = "iClust") %>%
+  map(readRDS) %>% 
+  `[`(gtools::mixedsort(names(.)))
+fet_pam50 <- dir_ls(fet.dir, regexp = "Pam50") %>% 
+  map(readRDS)
+fet_erher2 <- dir_ls(fet.dir, regexp = "HER2") %>% 
+  map(readRDS)
+```
+
+# FET Tables All Cases
+
+```{r pander-print-all}
+# Store case counts
+ncases <- set_names(nrow(sehdf), "All Cases")
+
+cat_line(glue(headers, group = ""))
+# Contingency table
+tab <- fet_all[[1]]
+pander(tab, caption = paste0("FET Table ", names(ncases), ", FDR = ", fdr), digits = 2)
+# FET statistics
+stat <- tidy_fet(tab$fisher.ts)
+pander(stat, caption = paste0("FET Statistics ", names(ncases), ", FDR = ", fdr))
+cat_line("\\pagebreak")
+```
+
+# FET Tables by IntClust subgroups
+
+```{r pander-print-intclust}
+# Store case counts
+ncases <- table(sehdf$iClustf)
+
+walk(seq_along(ncases), ~ {
+  cat_line(glue(headers, group = "IntClust")[.])
+  # Contingency table
+  tab <- fet_intclust[[.]]
+  pander(tab, caption = glue(captions, group = "Table IntClust")[.], digits = 2)
+  # FET statistics
+  stat <- tidy_fet(tab$fisher.ts)
+  pander(stat, caption = glue(captions, group = "Statistics IntClust")[.])
+  cat_line("\\pagebreak")
+})
+```
+
+# FET Tables by PAM50 subgroups
+
+```{r pander-print-pam50}
+# Store case counts
+ncases <- table(sehdf$Pam50Subtype, exclude = "NC")
+
+walk(seq_along(ncases), ~ {
+  cat_line(glue(headers, group = "PAM50 ")[.])
+  # Contingency table
+  tab <- fet_pam50[[.]]
+  pander(tab, caption = glue(captions, group = "Table PAM50 ")[.], digits = 2)
+  # FET statistics
+  stat <- tidy_fet(tab$fisher.ts)
+  pander(stat, caption = glue(captions, group = "Statistics PAM50 ")[.])
+  cat_line("\\pagebreak")
+})
+```
+
+# FET Tables by ER/HER2 status
+
+```{r pander-print-er_her2}
+# Store case counts
+ncases <- sehdf %>% 
+  count(ER.Expr, Her2.Expr) %>% 
+  transmute(Subtype = paste0("ER", ER.Expr, " HER2", Her2.Expr), n) %>% {
+    set_names(.$n, .$Subtype)
+  }
+
+walk(seq_along(ncases), ~ {
+  cat_line(glue(headers, group = "")[.])
+  # Contingency table
+  tab <- fet_erher2[[.]]
+  pander(tab, caption = glue(captions, group = "Table ")[.], digits = 2)
+  # FET statistics
+  stat <- tidy_fet(tab$fisher.ts)
+  pander(stat, caption = glue(captions, group = "Statistics ")[.])
+  cat_line("\\pagebreak")
+})
+```

@@ -1,0 +1,100 @@
+> CrossTable(mbpcdf$BHadj_and_AgeDependentp.cut60, mbpcdf$BHadj_and_AgeDependentp.cut50,
++            expected = TRUE, chisq = TRUE)
+
+ 
+   Cell Contents
+|-------------------------|
+|                       N |
+|              Expected N |
+| Chi-square contribution |
+|           N / Row Total |
+|           N / Col Total |
+|         N / Table Total |
+|-------------------------|
+
+ 
+Total Observations in Table:  18950 
+
+ 
+                                     | mbpcdf$BHadj_and_AgeDependentp.cut50 
+mbpcdf$BHadj_and_AgeDependentp.cut60 |     FALSE |      TRUE | Row Total | 
+-------------------------------------|-----------|-----------|-----------|
+                               FALSE |     15007 |       280 |     15287 | 
+                                     | 12181.198 |  3105.802 |           | 
+                                     |   655.531 |  2571.045 |           | 
+                                     |     0.982 |     0.018 |     0.807 | 
+                                     |     0.994 |     0.073 |           | 
+                                     |     0.792 |     0.015 |           | 
+-------------------------------------|-----------|-----------|-----------|
+                                TRUE |        93 |      3570 |      3663 | 
+                                     |  2918.802 |   744.198 |           | 
+                                     |  2735.765 | 10729.885 |           | 
+                                     |     0.025 |     0.975 |     0.193 | 
+                                     |     0.006 |     0.927 |           | 
+                                     |     0.005 |     0.188 |           | 
+-------------------------------------|-----------|-----------|-----------|
+                        Column Total |     15100 |      3850 |     18950 | 
+                                     |     0.797 |     0.203 |           | 
+-------------------------------------|-----------|-----------|-----------|
+
+ 
+Statistics for All Table Factors
+
+
+Pearson's Chi-squared test 
+------------------------------------------------------------
+Chi^2 =  16692.23     d.f. =  1     p =  0 
+
+Pearson's Chi-squared test with Yates' continuity correction 
+------------------------------------------------------------
+Chi^2 =  16686.32     d.f. =  1     p =  0 
+
+ 
+> save.image()
+> class(mbpcdf$BHadj_and_AgeDependentp.cut60)
+[1] "logical"
+> 
+> class(mbpcdf$BHadj_and_AgeDependentp.cut50)
+[1] "logical"
+> sort(mbpcdf$Gene_symbol[mbpcdf$BHadj_and_AgeDependentp.cut60 == FALSE & mbpcdf$BHadj_and_AgeDependentp.cut50 == TRUE])
+  [1] "ADRA2A"        "ADRM1"         "AEBP1"         "AK058186"      "AK091194"      "AK095766"      "ALG3"          "AMT"           "ANXA7"        
+ [10] "ARD1A"         "ARH3"          "ASF1B"         "ATAD3A"        "BAZ2B"         "BRD7"          "C11orf82"      "C12orf49"      "C13orf3"      
+ [19] "C14orf102"     "C14orf132"     "C14orf135"     "C14orf28"      "C1QTNF6"       "C4orf19"       "C6orf165"      "C7orf41"       "C7orf49"      
+ [28] "CCDC146"       "CCDC48"        "CCDC80"        "CCNI"          "CD209"         "CD36"          "CDC25C"        "CDKN2D"        "CEBPG"        
+ [37] "CELSR2"        "CENPL"         "CHSY3"         "CKAP5"         "COL8A2"        "COX4NB"        "COX5A"         "CPA3"          "CPE"          
+ [46] "CRBN"          "CREBBP"        "CTDSP2"        "CYGB"          "DACT3"         "DEPDC1B"       "DFNB31"        "DHRS9"         "DHTKD1"       
+ [55] "DIAPH3"        "DICER1"        "DIXDC1"        "DKFZp434I0916" "DKK3"          "DNAH2"         "DNAJC3"        "DNM1L"         "DOCK1"        
+ [64] "DPT"           "DQ895684"      "DSN1"          "DYNC2H1"       "EEF2"          "EFEMP2"        "EIF3G"         "EIF4B"         "ELN"          
+ [73] "EMG1"          "EN1"           "EPOR"          "ERCC1"         "FADS1"         "FADS2"         "FAM100B"       "FAM105B"       "FAM13B"       
+ [82] "FAM172A"       "FAM58A"        "FANCI"         "FBXO15"        "FBXO5"         "FDPS"          "FEN1"          "FEZ1"          "FNTB"         
+ [91] "FOLR2"         "FST"           "GALK1"         "GINS2"         "GLIS3"         "GLRX2"         "GLTSCR2"       "GNE"           "GPHN"         
+[100] "GPR180"        "GPT"           "GRP"           "GSTM2"         "GYG1"          "H2AFX"         "HAUS8"         "HBP1"          "HEATR3"       
+[109] "HEG1"          "HLA-DMA"       "HLA-DMB"       "HLA-DPA1"      "HLA-DRA"       "HLA-DRB1"      "HPS1"          "HRAS"          "HTR2B"        
+[118] "HYPK"          "ID1"           "IGBP1"         "IMPDH2"        "INCENP"        "IRX3"          "KCTD9"         "KIAA0087"      "KIAA0101"     
+[127] "KIAA0247"      "KIAA0430"      "KIF18A"        "KLHL34"        "KLHL36"        "LAYN"          "LCLAT1"        "LCOR"          "LMNB1"        
+[136] "LRP5"          "LRRC17"        "LRRC32"        "LYRM1"         "MAF"           "MAP2K1"        "MAP4K2"        "MAPKAPK5"      "MBOAT1"       
+[145] "ME1"           "MESP1"         "MFAP5"         "MFI2"          "MGEA5"         "MMP1"          "MND1"          "MRPL48"        "MRPS7"        
+[154] "MVD"           "MXD4"          "MXRA8"         "MYOF"          "MYST1"         "NACC2"         "NCAPG2"        "NIPA2"         "NLGN4X"       
+[163] "NOX4"          "NRIP1"         "NRTN"          "NSUN2"         "NUF2"          "NUP62"         "NXNL2"         "OIP5"          "OLFML2B"      
+[172] "OLFML3"        "OMD"           "OSGIN1"        "OSTF1"         "OVGP1"         "OXGR1"         "P2RY5"         "P4HB"          "PANX2"        
+[181] "PBK"           "PCIA1"         "PCYT2"         "PDE1A"         "PGM1"          "PGR"           "PIF1"          "PIGN"          "PLAC9"        
+[190] "PLEKHB1"       "PLEKHG3"       "PLK1"          "PLSCR4"        "POLA2"         "POLG"          "POLR2D"        "PPAP2A"        "PPARG"        
+[199] "PPP3CB"        "PSMD2"         "PSMF1"         "PTGIS"         "PTPN13"        "PVR"           "QARS"          "RAB31"         "RACGAP1"      
+[208] "RBM6"          "RCAN3"         "RCBTB2"        "RPL13A"        "RPL15"         "RPP38"         "RPS6KB2"       "RRAGB"         "RRM2"         
+[217] "RUNX1"         "S100A4"        "SCARB1"        "SCARF2"        "SEC14L1"       "SEC61A2"       "SELS"          "SENP5"         "SEPT9"        
+[226] "SETD8"         "SGOL1"         "SLC14A1"       "SLC16A3"       "SLC22A18AS"    "SLC25A19"      "SLC31A2"       "SLC3A2"        "SLC6A9"       
+[235] "SLC7A2"        "SLCO2A1"       "SNCA"          "SNX8"          "SORCS2"        "SOX18"         "SPARC"         "SPATA7"        "SPC25"        
+[244] "SPSB3"         "SSR2"          "STIM1"         "STIP1"         "SUV420H1"      "TBC1D14"       "TCEB1"         "TCF4"          "TGFB1I1"      
+[253] "TGFB3"         "TK1"           "TMC6"          "TMEM105"       "TMEM208"       "TSPAN7"        "TTC21A"        "TTC8"          "TXNRD1"       
+[262] "TYROBP"        "UBE2F"         "UBE2H"         "UBE2V1"        "USP36"         "WBP2"          "WDR13"         "WDR35"         "YARS"         
+[271] "YIF1B"         "ZC3H14"        "ZDHHC13"       "ZDHHC18"       "ZFYVE26"       "ZNF20"         "ZNF219"        "ZNF25"         "ZNF423"       
+[280] "ZNF564"       
+> sort(mbpcdf$Gene_symbol[mbpcdf$BHadj_and_AgeDependentp.cut60 == TRUE & mbpcdf$BHadj_and_AgeDependentp.cut50 == FALSE])
+ [1] "ABCA1"     "AFP"       "AHNAK"     "AKIRIN1"   "APO3L"     "ARPC5L"    "C1orf115"  "C1orf2"    "C1orf51"   "C20orf39"  "CACYBP"    "CCT6B"    
+[13] "CCT8"      "CHST4"     "CLCNKA"    "CMAS"      "DIP2A"     "DNAJB6"    "EP300"     "FBXO9"     "FGD5"      "FLJ11235"  "FSTL3"     "FZD4"     
+[25] "GALC"      "GART"      "GNG12"     "GNL3L"     "GPI"       "GTF2IP1"   "HIST1H2AC" "HNRNPAB"   "HOXC8"     "HPRT1"     "HSPD1"     "HYOU1"    
+[37] "IARS"      "IL13RA1"   "IQGAP2"    "ISG20L2"   "LAMP2"     "LIMA1"     "LOC284297" "LRRC4C"    "MCM2"      "MOCS1"     "MSX1"      "MTDH"     
+[49] "MYOZ3"     "NBEA"      "NCAM2"     "NET1"      "NOMO3"     "NOP16"     "NUAK1"     "NUTF2"     "PDCD2L"    "PER2"      "PPM1A"     "PRND"     
+[61] "PRO0461"   "PTER"      "RASSF4"    "SASH3"     "SC5DL"     "SCNN1B"    "SDK2"      "SEH1L"     "SEMA4D"    "SLAIN1"    "SLMO1"     "SMARCE1"  
+[73] "SMC4"      "SMOC1"     "SOX13"     "SQLE"      "SSBP1"     "TACC2"     "THOC3"     "TKT"       "TM4SF18"   "TMED10"    "TMEM79"    "TPSAB1"   
+[85] "TROVE2"    "TUBA3C"    "TUBA4A"    "UBL3"      "UNG"       "UQCRB"     "XRCC6"     "YWHAZ"     "ZDHHC1"   
