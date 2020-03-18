@@ -1,0 +1,48 @@
+---
+title: |
+  | Age-Associated Biomarker Study
+  | TCGA Prostate Cancer All Cases Fisher's Exact Tests
+author: "Derek Chiu"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output: 
+  pdf_document:
+    keep_tex: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+```{r load}
+library(purrr)
+library(glue)
+library(pander)
+library(ageassn)
+panderOptions("digits", 2)
+organ <- "Prostate"
+sub <- "All Cases"
+root.dir <- glue("main/code/Analysis_TCGA_{organ}Ca_RNASeq_Expression_Trends/tables/")
+cap <- glue("ER binding and age associated gene counts for TCGA {organ} cancer data, {sub}, FDR")
+cap_nki <- paste("NKI", cap)
+```
+
+```{r fisher}
+dct <- tcga_fet(root.dir, fdr = c(0.05, 0.01))
+pander(dct[["0.05_1.25"]], caption = paste(cap, "0.05"))
+dct[["0.05_1.25"]]$fisher.ts
+pander(dct[["0.01_1.25"]], caption = paste(cap, "0.01"))
+dct[["0.01_1.25"]]$fisher.ts
+```
+
+```{r fisher-nki}
+dct <- tcga_fet(root.dir, fdr = c(0.05, 0.01), nki = TRUE)
+pander(dct[["0.05_1.25"]], caption = paste(cap_nki, "0.05"))
+dct[["0.05_1.25"]]$fisher.ts
+pander(dct[["0.01_1.25"]], caption = paste(cap_nki, "0.01"))
+dct[["0.01_1.25"]]$fisher.ts
+```

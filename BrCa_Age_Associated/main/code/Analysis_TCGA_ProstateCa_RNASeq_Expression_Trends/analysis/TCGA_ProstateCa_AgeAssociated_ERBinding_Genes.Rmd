@@ -1,0 +1,175 @@
+---
+title: "Age-Associated Biomarker Study  \nTCGA `r params$organ` Cancer RNA-Seq Findings"
+author: "Derek Chiu"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output: word_document
+params:
+  organ: Prostate
+  sub: ""
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+```{r load}
+# Load packages
+library(tidyverse)
+library(glue)
+library(pander)
+library(ageassn)
+
+# Constants
+age <- 60
+fc <- 1.25
+fdr <- 0.01
+n.mb <- 4335  # number of cases in METABRIC
+iwalk(params, ~ assign(.y, .x, pos = 1))
+
+# Load data
+root.dir <- glue("main/code/Analysis_TCGA_{str_to_title(organ)}Ca_RNASeq_Expression_Trends/{sub}/tables/")
+aroutdf <- read_csv(glue("{root.dir}aroutdf_FDR_{str_decimal(fdr)}_FC_{str_decimal(fc)}.csv"))
+tcga_load(organ)
+```
+
+```{r data_munging}
+# munge data inputs to get analysis outputs
+tcga_process(cldf, ealldf, annodf, ardf, ezdf, ebdf, ebdf_t1, ebdf_t2)
+```
+
+```{r fisher_exact_test}
+# Test association between age association and ER binding
+mat <- tcga_fet(root.dir) %>% 
+  magrittr::extract2(1)
+age_total <- mat$cs[["Age associated"]]
+erb_total <- mat$rs[["ER binding"]]
+age_erb <- mat$tab[1, 1]
+```
+
+# Executive Summary
+
+TCGA `r organ` cancer data contained `r nrow(sedf)` clinically annotated cases with gene expression measured via RNA-Seq for `r nrow(exandf)` gene targets.
+
+`r age_total` gene targets (`r paste0(signif(age_total / nrow(exandf) * 100, 0), "%")`) showed an absolute fold change of `r fc` or larger and an adjusted p-value less than `r fdr`, demonstrating age-associated expression structure.  (The METABRIC series yielded `r n.mb` age-associated targets from `r nrow(annodf)` probesets (`r paste0(signif(n.mb / nrow(annodf) * 100, 0), "%")`) that showed an absolute fold change of `r fc` or larger and an adjusted p-value less than `r fdr`.)
+
+# Details
+
+```{r data_sources}
+# Data source file names
+data.sources <- data.frame(
+  Data = c(glue("TCGA {organ} clinical"), "RNA-Seq expression",
+           "METABRIC annotations", "Age-related genes",
+           "EZH2-related genes", "ER binding"),
+  File = c("data_bcr_clinical_data_patient.txt",
+           "data_RNA_Seq_v2_expression_median.rds",
+           "Annotation_Illumina_Human-WG-V3_hg18_V1.0.0_Aug09.rds",
+           "AgeRelated_Accession_Numbersv02.csv",
+           "EZH2relatedGenesv08.csv",
+           "ER_binding_gene_hg19_threshold_1e-5.txt"))
+pander(data.sources, caption = "Table 1: Data Sources", justify = "ll")
+```
+
+Data are annotated with HUGO gene names. Refseq IDs were not available.
+
+`r nrow(exandf)` gene targets were available in RNA-Seq expression data.
+
+Clinical data available included age at diagnosis for `r nrow(sedf)` cases.
+
+Linear regression modeling was carried out using the base-2 logarithms of the RNA-Seq expression data as the dependent variable, and age at diagnosis as the independent variable.
+
+Three regression lines were fitted for each gene target: one for age <= `r age` years, one for age > `r age` years, and one for all ages. Estimated slope of regression line for each of the three fits was recorded, along with the p-value for the test of regression line slope equal to zero (no correlation between age and expression). P-values were adjusted for multiple comparisons using the Benjamini-Hochberg method.
+
+An association with age was declared for a gene target if at least one of the regression lines indicated an absolute fold change of `r fc` or greater over the age range for the regression fit, with an adjusted p-value less than `r fdr`. The fold change requirement is to ensure that some degree of biological relevance is present in the findings. With such a large data set (`r nrow(sedf)` cases), trivially small changes in expression can yield a small p-value. These statistical artifacts are not generally useful in attempting to better understand the underlying biological mechanisms occurring in the data. Inclusion of a minimum absolute fold change criterion helps to ensure that statistically significant findings also have some degree of biological relevance.
+
+There is insufficient evidence to claim a statistically significant association between ER binding and age-associated expression, as seen in the Fisher's Exact Test.
+
+```{r fisher_table}
+# ER binding vs. Age association confusion matrix, Fisher's exact test
+pander(mat, caption = glue("Table 2: ER binding and age associated gene counts for the TCGA {organ} cancer data"))
+mat$fisher.ts
+```
+
+Additional data on genes showing an ER binding affinity are available from a ChIP-Seq study (Carroll et al.).
+
+Of the `r nrow(exandf)` gene targets available, `r erb_total` were identified as having an ER binding affinity from the ChIP-Seq findings (`r paste0(round(erb_total / nrow(exandf) * 100, 0), "%")`).
+
+Of the `r age_total` age-associated gene targets, `r age_erb` were in the ER binding set (`r paste0(round(age_erb / age_total * 100, 0), "%")`) showing a degree of enrichment in the age-associated set.
+
+# Figures
+
+Representative age-associated gene target plots are shown below for different patterns of association. LOESS smoothing curves are shown on each graph since expression trends can be more complex than linear trends.
+
+```{r plot_data}
+# Randomly choose one representative gene from each of the different
+# estimate-p-value patterns
+set.seed(1)
+epvaldf <- aroutdf %>%
+  filter(Hugo_Symbol %in% tcgaarnms) %>% 
+  select(Gene = Hugo_Symbol, LE60_slope, GT60_slope, AllAges_slope,
+         LE60_pval, GT60_pval, AllAges_pval, BHadj_and_AgeDependentp) %>% 
+  filter(BHadj_and_AgeDependentp) %>%
+  mutate(
+    LE60_inc = LE60_slope > 0,
+    GT60_inc = GT60_slope > 0,
+    All_inc = AllAges_slope > 0,
+    LE60_sig = LE60_pval < fdr,
+    GT60_sig = GT60_pval < fdr,
+    All_sig = AllAges_pval < fdr,
+    Pattern = case_when(
+      LE60_inc & LE60_sig & !GT60_sig ~ "LE_inc",
+      !LE60_inc & LE60_sig & !GT60_sig ~ "LE_dec",
+      GT60_inc & GT60_sig & !LE60_sig ~ "GT_inc",
+      !GT60_inc & GT60_sig & !LE60_sig ~ "GT_dec",
+      All_inc & All_sig ~ "All_inc",
+      TRUE ~ "All_dec")
+  ) %>% 
+  select(Gene, LE60_pval, GT60_pval, AllAges_pval, Pattern) %>%
+  group_by(Pattern) %>% 
+  sample_n(size = 1) %>% 
+  mutate_at(vars(matches("pval")),
+            funs(vapply(., format, digits = 5, character(1)))) %>% 
+  mutate(
+    LE60_pval = paste0("[<=", age, "] p = ", LE60_pval),
+    GT60_pval = paste0("[>", age, "] p = ", GT60_pval),
+    AllAges_pval = paste("[All] p =", AllAges_pval),
+    Trend = ifelse(
+      Gene %in% with(aroutdf, Hugo_Symbol[BHadj_and_AgeDependentp]),
+      paste0("Age-dependent trend:\n\n|FC|>", fc, " and adjPval<", fdr),
+      paste0("No detectable trend:\n\n|FC|<", fc, " or adjPval>", fdr)
+    )
+  ) %>% 
+  ungroup() %>% 
+  mutate(Num = seq_len(nrow(.))) %>% 
+  separate(Pattern, into = c("Type", "Direction")) %>% 
+  mutate(
+    Direction = ifelse(
+      Direction == "dec", "show a decreasing trend", "show an increasing trend"),
+    Pattern = case_when(
+      Type == "All" ~ paste0(Direction, " \n across all ages"),
+      Type == "LE" ~  paste0(Direction, " \n up to age ", age, ", and constant after"),
+      TRUE ~ paste0("constant up to age ", age, ", \n but ", Direction, " after")
+    )
+  ) %>% 
+  select(-Type, -Direction)
+
+# Data for plotting
+plotdf <- sedf %>% 
+  select(Age, one_of(tcgaarnms)) %>% 
+  gather(Gene, Expression, -1) %>% 
+  merge(epvaldf) %>% 
+  split(.$Gene) %>% 
+  magrittr::extract(epvaldf$Gene)
+
+# Apply function to list of all gene expression data
+all.plots <- map(plotdf, ~ scatterfit_plot(
+  x = .,
+  caption = paste0("Figure ", .$Num, ": ", .$Gene,
+                   " expression levels ", .$Pattern)
+))
+walk(all.plots, print)
+```
