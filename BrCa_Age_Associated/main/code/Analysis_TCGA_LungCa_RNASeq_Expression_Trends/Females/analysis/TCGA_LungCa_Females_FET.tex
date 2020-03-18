@@ -1,0 +1,552 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfauthor={Derek Chiu},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Age-Associated Biomarker Study\\
+TCGA Lung Cancer Females Fisher's Exact Tests}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Derek Chiu}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{July 23, 2018}
+
+
+\begin{document}
+\maketitle
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{ER binding and age associated gene counts for TCGA Lung cancer
+data, Females, FDR 0.05}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+52\\
+3.10\%\\
+9.76\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+1626\\
+96.90\%\\
+8.83\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+1678\\
+8.85\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+481\\
+2.78\%\\
+90.24\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+16791\\
+97.22\%\\
+91.17\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+17272\\
+91.15\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+533\\
+2.81\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18417\\
+97.19\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{verbatim}
+## 
+##  Fisher's Exact Test for Count Data
+## 
+## data:  tab
+## p-value = 0.4396
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##  0.8181683 1.4959110
+## sample estimates:
+## odds ratio 
+##   1.116356
+\end{verbatim}
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{ER binding and age associated gene counts for TCGA Lung cancer
+data, Females, FDR 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+0\\
+0.00\%\\
+0.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+1678\\
+100.00\%\\
+8.86\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+1678\\
+8.85\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+11\\
+0.06\%\\
+100.00\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+17261\\
+99.94\%\\
+91.14\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+17272\\
+91.15\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+11\\
+0.06\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18939\\
+99.94\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{verbatim}
+## 
+##  Fisher's Exact Test for Count Data
+## 
+## data:  tab
+## p-value = 0.6145
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##  0.000000 4.102642
+## sample estimates:
+## odds ratio 
+##          0
+\end{verbatim}
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{NKI ER binding and age associated gene counts for TCGA Lung
+cancer data, Females, FDR 0.05}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+85\\
+2.96\%\\
+15.95\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2790\\
+97.04\%\\
+15.15\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+88\\
+2.75\%\\
+16.51\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3117\\
+97.25\%\\
+16.92\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+360\\
+2.80\%\\
+67.54\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12510\\
+97.20\%\\
+67.93\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+533\\
+2.81\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18417\\
+97.19\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{verbatim}
+## 
+##  Fisher's Exact Test for Count Data
+## 
+## data:  tab
+## p-value = 0.8577
+## alternative hypothesis: two.sided
+\end{verbatim}
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{NKI ER binding and age associated gene counts for TCGA Lung
+cancer data, Females, FDR 0.01}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering\strut
+~\\
+ER binding\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\centering\strut
+Age association\\
+Age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+~\\
+Not age associated\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\\
+Total\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 1}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+3\\
+0.10\%\\
+27.27\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+2872\\
+99.90\%\\
+15.16\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+2875\\
+15.17\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Tier 2 Only}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+1\\
+0.03\%\\
+9.09\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+3204\\
+99.97\%\\
+16.92\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+3205\\
+16.91\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+\textbf{Not ER binding}\\
+N\\
+Row(\%)\\
+Column(\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+~\\
+7\\
+0.05\%\\
+63.64\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+~\\
+12863\\
+99.95\%\\
+67.92\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+~\\
+12870\\
+67.92\%\\
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.28\columnwidth}\centering\strut
+Total\\
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+11\\
+0.06\%\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+18939\\
+99.94\%\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+18950\\
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{verbatim}
+## 
+##  Fisher's Exact Test for Count Data
+## 
+## data:  tab
+## p-value = 0.5772
+## alternative hypothesis: two.sided
+\end{verbatim}
+
+
+\end{document}
