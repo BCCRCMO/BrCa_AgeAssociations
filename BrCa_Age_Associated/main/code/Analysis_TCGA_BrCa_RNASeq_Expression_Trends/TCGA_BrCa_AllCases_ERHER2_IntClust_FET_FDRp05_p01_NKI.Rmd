@@ -1,0 +1,99 @@
+---
+title: "TCGA BrCa Female Cases Age Dependent Fisher Exact Tests on NKI ER binding"
+output:
+  pdf_document: 
+    keep_tex: yes
+  word_document: default
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	results = "asis"
+)
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+```{r load}
+# Load packages
+library(tidyverse)
+library(glue)
+library(cli)
+library(pander)
+library(ageassn)
+panderOptions("digits", 2)
+panderOptions("knitr.auto.asis", FALSE)
+
+# Constants
+fc <- 1.25
+fdr <- c(0.05, 0.01)
+
+# Load data
+fet.dir <- "main/code/Analysis_TCGA_BrCa_RNASeq_Expression_Trends/FET_tables/"
+tcga_load("Br")
+
+# Header and caption strings
+headers <- "## {group}{names(ncases)} Female Cases, n = {ncases}, FDR = {fdrs}"
+captions <- "FET {group}{names(ncases)} Female Cases, FDR = {fdrs}"
+```
+
+```{r data-munging}
+# Create data for female breast cancers
+tcga_process(cldf, ealldf, annodf, ardf, ezdf, ebdf, ebdf_t1, ebdf_t2, icdf,
+             gender = "female")
+```
+
+```{r fisher-exact-test-by-ER}
+# Combine data for all with ER statuses, read in FET results
+EHfs <- c("All", levels(sedf$BrCaEHf))
+dct <- tcga_fet(fet.dir, fdr, suffix = EHfs, nki = TRUE)
+```
+
+# FET Tables by ER/HER2 status
+
+```{r pander-print-by-ER}
+# Store case counts and fdr
+ncases <- rep(c("All" = nrow(sedf), table(sedf$BrCaEHf)), length(fdr))
+fdrs <- rep(fdr, each = length(EHfs))
+
+walk(seq_along(ncases), ~ {
+  cat_line(glue(headers, group = "")[.])
+  # Contingency table
+  tab <- dct[[.]]
+  pander(tab, caption = glue(captions, group = "Table ")[.], digits = 2)
+  # FET statistics
+  stat <- tidy_fet(tab$fisher.ts)
+  pander(stat, caption = glue(captions, group = "Statistics ")[.])
+  cat_line("\\pagebreak")
+})
+```
+
+```{r fisher-exact-test-by-iClust}
+# Read in FET results for IntClust groups
+iCfs <- sort(unique(sedf$IntClust))
+dct <- tcga_fet(fet.dir, fdr,
+                suffix = paste0("iClust", str_pad(iCfs, width = 2, pad = 0)),
+                nki = TRUE)
+```
+
+# FET Tables by IntClust subgroups 
+
+```{r pander-print-by-iClust}
+# Store case counts and fdr
+ncases <- rep(table(sedf$IntClust), length(fdr))
+fdrs <- rep(fdr, each = length(iCfs))
+
+walk(seq_along(ncases), ~ {
+  cat_line(glue(headers, group = "IntClust")[.])
+  # Contingency table
+  tab <- dct[[.]]
+  pander(tab, caption = glue(captions, group = "Table IntClust")[.], digits = 2)
+  # FET statistics
+  stat <- tidy_fet(tab$fisher.ts)
+  pander(stat, caption = glue(captions, group = "Statistics IntClust")[.])
+  cat_line("\\pagebreak")
+})
+```

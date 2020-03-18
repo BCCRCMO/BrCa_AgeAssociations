@@ -1,0 +1,14 @@
+
+gene_with_protein_product.txt
+
+obtained from
+
+ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/locus_types/gene_with_protein_product.txt
+
+via 
+
+http://www.genenames.org/cgi-bin/statistics
+
+HUGO Gene Nomenclature Committee
+
+
