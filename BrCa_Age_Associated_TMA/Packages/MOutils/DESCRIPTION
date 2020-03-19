@@ -1,0 +1,12 @@
+Package: MOutils
+Type: Package
+Title: Molecular Oncology utility functions
+Version: 1.5
+Date: 2012-11-08
+Author: Steven McKinney
+Maintainer: Steven McKinney <smckinney@bccrc.ca>
+Description: Collection of functions useful in graphing and analyzing data from MO lab experiments (screens, blots, qPCR etc.)
+License: Gnu GPL
+LazyLoad: yes
+Packaged: 2014-03-13 23:03:50 UTC; stevenmckinney
+Built: R 3.0.3; ; 2014-03-13 23:04:21 UTC; unix

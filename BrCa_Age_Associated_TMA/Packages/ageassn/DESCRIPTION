@@ -1,0 +1,40 @@
+Type: Package
+Package: ageassn
+Title: Running Analyses for the BrCa Age Associated Biomarker Project
+Version: 0.0.0.9009
+Date: 2018-05-16
+Authors@R: c(
+    person("Derek", "Chiu", , "dchiu@bccrc.ca", c("aut", "cre"))
+    )
+Description: Various data setup, munging, and processing functions used to 
+    obtain results for METABRIC and TCGA datasets of the BrCa Age Associated
+    Biomarker project. Result tables, scatterplots, volcano plots, and manhattan
+    plots comprise some of the outputs.
+License: MIT + file LICENSE
+URL: https://github.com/BCCRCMO/ageassn
+BugReports: https://github.com/BCCRCMO/ageassn/issues
+Imports: 
+    amap,
+    assertthat,
+    broom,
+    descr,
+    dplyr,
+    fs,
+    ggplot2,
+    ggrepel,
+    glue,
+    gridExtra,
+    magrittr,
+    maptools,
+    parallel,
+    progress,
+    purrr,
+    readr,
+    rlang,
+    stringr,
+    tibble,
+    tidyr
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1

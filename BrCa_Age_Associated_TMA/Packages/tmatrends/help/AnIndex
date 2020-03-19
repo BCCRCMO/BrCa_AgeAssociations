@@ -1,0 +1,14 @@
+tmatrends-package	tmatrends-package
+%>%	pipe
+create_dir	create_dir
+define	define
+define_bs	define
+define_mb09	define
+define_nb13	define
+ihc_trends	ihc_trends
+ihc_trends_all	ihc_trends
+ihc_trends_subgroup	ihc_trends
+sig_count	sig_count
+simsmufit	simsmufit
+supsmu.cor	supsmu.cor
+tmatrends	tmatrends-package

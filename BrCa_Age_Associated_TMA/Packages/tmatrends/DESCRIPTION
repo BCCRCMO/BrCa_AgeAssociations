@@ -1,0 +1,21 @@
+Type: Package
+Package: tmatrends
+Title: Analyzing IHC Trends in TMA Data
+Version: 0.0.0.9002
+Date: 2018-05-22
+Authors@R: c(
+    person("Derek", "Chiu", , "dchiu@bccrc.ca", c("aut", "cre"))
+    )
+Description: Various helper functions to manipulate data for analyzing IHC
+    Trends between age and biomarker expression. Supersmoother fits and 
+    statistical significance tables are the primary summary outputs.
+License: MIT + file LICENSE
+Imports: cli, dplyr, magrittr, pdftools, purrr, rlang (>= 0.1.2),
+        rprojroot, stringr
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.0
+Author: Derek Chiu [aut, cre]
+Maintainer: Derek Chiu <dchiu@bccrc.ca>
+Built: R 3.4.4; ; 2018-10-13 05:01:38 UTC; unix

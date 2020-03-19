@@ -1,0 +1,6 @@
+create_dir              Create directory if it doesn't exist
+define                  Define TMA biomarker definitions
+ihc_trends              IHC Trend plots
+sig_count               Count significant genes
+simsmufit               Simulated supersmoother fit
+supsmu.cor              Supersmoother fit correlation
